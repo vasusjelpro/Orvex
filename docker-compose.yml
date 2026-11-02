@@ -1,0 +1,46 @@
+# Un solo comando levanta todo:  docker compose up --build
+services:
+  db:
+    image: mysql:8.0
+    environment:
+      MYSQL_DATABASE: orvex
+      MYSQL_USER: orvex
+      MYSQL_PASSWORD: ${DB_PASSWORD:-orvex_dev}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD:-root_dev}
+    ports:
+      - "3306:3306"
+    volumes:
+      - orvex_db:/var/lib/mysql
+    healthcheck:
+      # -h 127.0.0.1 fuerza conexión por red: el servidor temporal de init no tiene red y no pasa la prueba
+      test: ["CMD", "mysqladmin", "ping", "-h", "127.0.0.1", "-uroot", "-p${DB_ROOT_PASSWORD:-root_dev}", "--silent"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  api:
+    build: ./backend
+    restart: on-failure
+    environment:
+      DB_URL: jdbc:mysql://db:3306/orvex?useUnicode=true&characterEncoding=utf8
+      DB_USER: orvex
+      DB_PASSWORD: ${DB_PASSWORD:-orvex_dev}
+      CORS_ORIGINS: http://localhost:3000
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "8080:8080"
+
+  web:
+    build:
+      context: ./frontend
+      args:
+        NEXT_PUBLIC_API_URL: http://localhost:8080
+    depends_on:
+      - api
+    ports:
+      - "3000:3000"
+
+volumes:
+  orvex_db:

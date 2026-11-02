@@ -1,0 +1,19 @@
+# Secretos
+.env
+
+# Java / Maven
+target/
+*.class
+*.log
+
+# Node / Next.js
+node_modules/
+.next/
+next-env.d.ts
+out/
+
+# IDEs y SO
+.idea/
+.vscode/
+*.iml
+.DS_Store

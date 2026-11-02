@@ -1,0 +1,40 @@
+:root {
+  --crema: #fdd9a0;
+  --rosa: #f76fae;
+  --durazno: #ff9f80;
+  --tinta: #2b2230;
+  --serif: "Playfair Display", Georgia, "Times New Roman", serif;
+}
+body { font-family: Inter, system-ui, sans-serif; background: #fff8f1; color: var(--tinta); }
+a { text-decoration: none; }
+
+.barra { background: var(--crema); border-bottom: 1px solid #b9976c; }
+.marca { font-family: var(--serif); font-weight: 700; font-size: 1.6rem; color: var(--tinta); }
+.nav-pill { background: #fff; display: flex; padding: .35rem; gap: .25rem; }
+.nav-pill a { color: #5a5060; padding: .45rem 1rem; font-size: .95rem; }
+.nav-pill a:hover { background: #fff0e4; color: var(--tinta); }
+.btn-carrito { background: #fff; border: 1px solid var(--durazno); color: #e8567f; font-family: var(--serif);
+  font-weight: 700; padding: .5rem 1.1rem; }
+.btn-carrito:hover { background: #ffe9e4; color: #e8567f; }
+
+.hero { background: linear-gradient(115deg, #f76fae 0%, #eea6c6 38%, #ff9f80 78%, #fdc78f 100%);
+  color: #fff; text-align: center; padding: 5.5rem 1rem 4rem; }
+.hero h1 { font-family: var(--serif); font-weight: 700; font-size: clamp(4rem, 12vw, 8rem); line-height: 1; margin: 0; }
+.hero .lema { letter-spacing: .18em; font-size: 1.15rem; margin: 1.5rem 0 .5rem; }
+.hero .nota { opacity: .85; }
+
+.modos { margin-top: -2.5rem; }
+.modo { display: block; background: #fff; color: var(--tinta); padding: 2rem; height: 100%;
+  border: 1px solid #f1d9c4; box-shadow: 0 8px 24px rgba(247, 111, 174, .15); }
+.modo:hover { color: var(--tinta); border-color: var(--rosa); }
+.modo h2 { font-family: var(--serif); font-size: 1.75rem; }
+.modo .ir { color: #e8567f; font-weight: 600; }
+
+.titulo { font-family: var(--serif); font-weight: 700; }
+.btn-orvex { background: var(--rosa); border-color: var(--rosa); color: #fff; }
+.btn-orvex:hover, .btn-orvex:disabled { background: #e8589a; border-color: #e8589a; color: #fff; }
+.filtro { border: 1px solid #e9cdb6; background: #fff; color: #5a5060; padding: .3rem .9rem; }
+.filtro.activo { background: var(--rosa); border-color: var(--rosa); color: #fff; }
+.producto { border-radius: 0; border: 1px solid #f1d9c4; }
+.producto .specs { font-size: .8rem; color: #7b7180; }
+.card, .list-group-item, .form-select, .btn, .alert, .badge { border-radius: 0; }

@@ -1,0 +1,23 @@
+spring:
+  application:
+    name: orvex-api
+  datasource:
+    url: ${DB_URL:jdbc:mysql://localhost:3306/orvex?useUnicode=true&characterEncoding=utf8}
+    username: ${DB_USER:orvex}
+    password: ${DB_PASSWORD:orvex_dev}
+  jpa:
+    open-in-view: false
+    hibernate:
+      ddl-auto: none        # el esquema lo controla Flyway, no Hibernate
+  flyway:
+    enabled: true
+
+orvex:
+  cors:
+    origins: ${CORS_ORIGINS:http://localhost:3000}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health
